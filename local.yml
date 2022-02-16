@@ -4,10 +4,9 @@
   become: true	
 
   roles:
-
-    - role: docker
-      vars:
-        docker_users: "soto" 
-    - role: anydesk
-    - role: slack
-    - role: pycharm
+    # - role: docker
+    #   vars:
+    #     docker_users: your_user
+    # - role: anydesk
+    # - role: slack
+    # - role: pycharm
