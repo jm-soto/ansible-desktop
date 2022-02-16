@@ -1,0 +1,17 @@
+---
+anydesk_apt_gpg_key: https://keys.anydesk.com/repos/DEB-GPG-KEY
+
+# Debian/Ubuntu variables.
+anydesk_apt_arch: amd64
+anydesk_repo_url: http://deb.anydesk.com/
+anydesk_apt_release_channel: all
+anydesk_apt_repository: "deb [arch={{ anydesk_apt_arch }}] {{ anydesk_repo_url }} {{ anydesk_apt_release_channel }} main"
+
+anydesk_packages:
+  - anydesk
+anydesk_packages_state: latest
+
+# Anydesk autostart configuration files 
+autostart_directory_path: "/home/{{ ansible_user }}/.config/autostart"
+anydesk_autostart_file: anydesk_global_tray.desktop
+anydesk_autostart_file_path: "{{ autostart_directory_path }}/{{ anydesk_autostart_file }}"

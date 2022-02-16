@@ -1,0 +1,12 @@
+---
+- name: Add Anydesk apt key.
+  apt_key:
+    url:    "{{ anydesk_apt_gpg_key }}"
+    state:  present
+
+- name: Add Anydesk repository.
+  apt_repository:
+    repo:     "{{ anydesk_apt_repository}}"
+    filename: anydesk-stable
+    mode:     0644
+    state:    present

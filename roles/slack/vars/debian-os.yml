@@ -1,0 +1,9 @@
+---
+# Debian/Ubuntu variables.
+slack_apt_arch: amd64
+slack_apt_gpg_key: "{{ slack_url }}/gpgkey"
+slack_apt_repository: "deb [arch={{ slack_apt_arch }}] {{ slack_url }}/{{ ansible_os_family | lower }}/ jessie main"
+
+slack_packages:
+  - slack-desktop
+slack_packages_state: latest

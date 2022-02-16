@@ -1,0 +1,28 @@
+# Old versions to uninstall.
+docker_old_packages:
+  - docker
+  - docker-engine
+  - docker.io
+  - containerd
+  - runc
+old_packages_status: absent
+
+# Docker packages.
+docker_package:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+docker_package_state: present
+
+# Service options.
+docker_restart_handler_state: restarted
+docker_service_state: started
+docker_service_enabled: true
+
+# List of users to add to docker group
+docker_users: "username"
+
+# Docker compose installation
+docker_compose_version: "1.29.2"
+docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-{{ ansible_architecture }}"
+docker_compose_installation_path: /usr/local/bin/docker-compose

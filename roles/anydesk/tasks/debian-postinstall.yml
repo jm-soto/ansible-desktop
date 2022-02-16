@@ -1,0 +1,16 @@
+---
+- name: Ensure autostart directory is created.
+  file:
+    path:   "{{ autostart_directory_path }}"
+    state:  directory
+    owner:  "{{ ansible_user }}"
+    group:  "{{ ansible_user }}"
+    mode:   0755
+
+- name: Disable anydesk autostart.
+  copy:
+    src:    "{{ anydesk_autostart_file }}"
+    dest:   "{{ anydesk_autostart_file_path }}"
+    owner:  "{{ ansible_user }}"
+    group:  "{{ ansible_user }}"
+    mode:   0664

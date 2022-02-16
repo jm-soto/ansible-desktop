@@ -1,0 +1,9 @@
+---
+# Docker packages.
+docker_package:
+  - "docker-ce=5:19.03.15~3-0~ubuntu-focal"
+  - "docker-ce-cli"
+  - containerd.io
+docker_package_state: present
+
+docker_compose_install: false

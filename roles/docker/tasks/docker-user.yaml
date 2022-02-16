@@ -1,0 +1,8 @@
+---
+- name: Ensure docker users are added to docker group.
+  when: docker_users | length > 0
+  user:
+    name:   "{{ item }}"
+    groups: docker
+    append: true
+  with_items: "{{ docker_users }}"

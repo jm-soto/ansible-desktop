@@ -1,0 +1,13 @@
+---
+- name: Setting up this machine
+  hosts: localhost
+  become: true	
+
+  roles:
+
+    - role: docker
+      vars:
+        docker_users: "soto" 
+    - role: anydesk
+    - role: slack
+    - role: pycharm
