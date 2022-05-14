@@ -1,9 +1,15 @@
 ---
 # Docker packages.
+# After set the docker repository, run this command to 
+# list available docker-ce versions:
+#
+#   $ apt-cache madison docker-ce
+#
+docker_ce_version: "5:19.03.15"
 docker_package:
-  - "docker-ce=5:19.03.15~3-0~ubuntu-focal"
+  - "docker-ce={{ docker_ce_version }}~3-0~ubuntu-focal"
   - "docker-ce-cli"
   - containerd.io
 docker_package_state: present
 
-docker_compose_install: false
+docker_compose_install: true

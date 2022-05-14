@@ -15,7 +15,7 @@
 - name: Include "{{ ansible_os_family }}" tasks.
   include_tasks: "setup-{{ ansible_os_family }}.yaml"
 
-- name: Install Docker.
+- name: Install Docker
   package:
     name:   "{{ item }}"
     state:  "{{ docker_package_state }}"
@@ -23,17 +23,17 @@
   ignore_errors: "{{ ansible_check_mode }}"
   loop: "{{ docker_package }}"
 
-- name: Ensure Docker is started and enabled at boot.
+- name: Ensure Docker is started and enabled at boot
   service:
     name: docker
     state: "{{ docker_service_state }}"
     enabled: "{{ docker_service_enabled }}"
 
-- name: Add regular user to docker group.
+- name: Add regular user to docker group
   include_tasks: docker-user.yaml
   when: docker_users | length > 0
 
-- name: Install docker-compose.
+- name: Install docker-compose
   include_tasks: docker-compose.yaml
   when: 
     - docker_compose_install | bool
