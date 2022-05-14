@@ -1,0 +1,28 @@
+---
+# APT 
+system_upgrade: true
+
+install_packages: true
+packages_to_install_list:
+  - curl
+  - gnupg
+  - apt-transport-https
+  - flameshot
+  - vim
+  - xz-utils
+  - vlc
+  - gnome-tweaks
+
+uninstall_packages: true
+packages_to_uninstall_list:
+  - bcache-tools 
+  - byobu
+  - cloud-guest-utils
+  - cloud-initramfs-copymods
+  - cloud-initramfs-dyn-netconf
+  - landscape-common
+  - lxd-agent-loader
+  - open-vm-tools
+  - popularity-contest
+  - sosreport
+  - tmux
