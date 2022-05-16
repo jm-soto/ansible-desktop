@@ -1,16 +1,3 @@
 ---
 pycharm_edition: community
-pycharm_version: 2021.3.2
-
-pycharm_plugins_url: "https://plugins.jetbrains.com/plugin/download?rel=true&updateId="
-pycharm_download_plugins_directory: "/tmp/pycharm_plugins"
-pycharm_plugins:
-  # https://plugins.jetbrains.com/pycharm
-  # Atom Material Icons 54.1.0
-  - 152784
-  # Makefile Language 213.5744.224 
-  - 147694
-  # Terraform and HCL 0.7.15
-  - 155521
-  # Material Theme UI 6.13.0
-  - 155335
+pycharm_version: 2021.3.3

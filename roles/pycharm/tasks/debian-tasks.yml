@@ -1,44 +1,26 @@
 ---
-- name: Ensure dependencies are installed.
+- name: Ensure dependencies are installed
   apt:
     name: tar 
     state: present
 
-- name: Create PyCharm installation directory.
+- name: Create PyCharm installation directory
   file:
-    path:  "{{ item }}"
+    path:  "{{ pycharm_install_directory }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    mode:  '0755'
+    mode:  0755
     state: directory
-  with_items:
-    - "{{ pycharm_install_directory }}"
-    - "{{ pycharm_download_plugins_directory }}"
 
 - name: Installing PyCharm {{ pycharm_edition }}-{{ pycharm_version }}
   unarchive:
     remote_src: yes
     src:        "{{ pycharm_download_url }}"
     dest:       "{{ pycharm_download_directory }}"
-    owner:	"{{ ansible_user }}"
+    owner:	    "{{ ansible_user }}"
     group:      "{{ ansible_user }}"
 
-- name: Download PyCharm plugins.
-  get_url:
-    url:  "{{ pycharm_plugins_url }}{{ item }}"
-    dest: "{{ pycharm_download_plugins_directory }}"
-  register: pycharm_plugins_downloaded
-  with_items: "{{ pycharm_plugins }}"
-
-- name: Install PyCharm Plugins.
-  unarchive:
-    src:   "{{ item.dest }}"
-    dest:  "{{ pycharm_install_directory }}/plugins"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-  with_items: "{{ pycharm_plugins_downloaded.results }}"
-
-- name: PyCharm desktop entry.
+- name: PyCharm desktop entry
   template:
     src:   pycharm-desktop.j2
     dest:  "{{ pycharm_desktop_file }}"
