@@ -1,16 +1,16 @@
 ---
-- name: Ensure dependencies are installed.
+- name: Ensure dependencies are installed
   apt:
     name:
       - apt-transport-https
     state: present
 
-- name: Add Slack apt key.
+- name: Add Slack apt key
   apt_key:
     url:  "{{ slack_apt_gpg_key }}"
     state: present
 
-- name: Add Slack repository.
+- name: Add Slack repository
   apt_repository:
     repo:         "{{ slack_apt_repository }}"
     filename:     slack

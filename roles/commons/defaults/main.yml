@@ -12,8 +12,10 @@ packages_to_install_list:
   - pip
   - vim
   - git
+  - zsh
   - vlc
   - flameshot
+  - timeshift
 
 uninstall_packages: true
 packages_to_uninstall_list:
