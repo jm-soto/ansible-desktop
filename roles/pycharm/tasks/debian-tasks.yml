@@ -20,10 +20,18 @@
     owner:	    "{{ ansible_user }}"
     group:      "{{ ansible_user }}"
 
+- name: Ensure direct access directory exist for {{ ansible_user }} user
+  file:
+    path:   "{{ pycharm_direct_access_directory }}"
+    state:  directory
+    owner:  "{{ ansible_user }}"
+    group:  "{{ ansible_user }}"
+    mode:   0700
+
 - name: PyCharm desktop entry
   template:
     src:   pycharm-desktop.j2
     dest:  "{{ pycharm_desktop_file }}"
     group: "{{ ansible_user }}"
     owner: "{{ ansible_user }}"
-    mode:  '0600'
+    mode:  0600
