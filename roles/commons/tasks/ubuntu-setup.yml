@@ -1,0 +1,43 @@
+---
+- name: APT | Update cache
+  apt:
+    update_cache:     yes
+    cache_valid_time: 3600
+  tags: 
+    - apt
+    - commons
+
+- name: APT | System upgrade
+  when: system_upgrade | bool
+  apt:
+    upgrade: "yes"
+  tags: 
+    - apt
+    - commons
+
+- name: APT | Uninstall common packages
+  when: uninstall_packages | bool
+  apt:
+    name:   "{{ packages_to_uninstall_list }}"
+    state:  absent
+    purge:  yes
+  tags: 
+    - apt
+    - commons
+
+- name: APT | Install common packages
+  when: install_packages | bool
+  apt:
+    name:  "{{ packages_to_install_list }}"
+    state: latest
+  tags: 
+    - apt
+    - commons
+
+- name: APT | Remove useless packages and dependencies not required
+  apt:
+    autoremove: yes
+    autoclean:  yes
+  tags:
+    - apt
+    - commons
