@@ -7,11 +7,13 @@ packages_to_install_list:
   - curl
   - gnupg
   - apt-transport-https
-  - flameshot
-  - vim
   - xz-utils
-  - vlc
   - gnome-tweaks
+  - pip
+  - vim
+  - git
+  - vlc
+  - flameshot
 
 uninstall_packages: true
 packages_to_uninstall_list:
