@@ -1,3 +1,10 @@
+## v0.3.0 (2022-10-16)
+
+### Feat
+
+- **Common-role**: Install The Fuck
+- **ansible-role**: Create kubectl role
+
 ## 0.2.0 (2022-10-16)
 
 ### Feat
