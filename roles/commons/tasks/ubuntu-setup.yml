@@ -8,7 +8,7 @@
     - commons
 
 - name: APT | System upgrade
-  when: system_upgrade | bool
+  when: system_upgrade
   apt:
     upgrade: "yes"
   tags: 
@@ -16,7 +16,7 @@
     - commons
 
 - name: APT | Uninstall common packages
-  when: uninstall_packages | bool
+  when: uninstall_packages
   apt:
     name:   "{{ packages_to_uninstall_list }}"
     state:  absent
@@ -26,7 +26,7 @@
     - commons
 
 - name: APT | Install common packages
-  when: install_packages | bool
+  when: install_packages
   apt:
     name:  "{{ packages_to_install_list }}"
     state: latest
