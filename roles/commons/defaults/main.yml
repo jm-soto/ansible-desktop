@@ -16,6 +16,7 @@ packages_to_install_list:
   - vlc
   - flameshot
   - timeshift
+  - xz-utils
 
 uninstall_packages: true
 packages_to_uninstall_list:
