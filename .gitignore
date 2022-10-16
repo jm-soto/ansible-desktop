@@ -1,5 +1,8 @@
 *.retry
 
+# Pycharm
+.idea
+
 # VSC
 .vscode/*
 !.vscode/settings.json
