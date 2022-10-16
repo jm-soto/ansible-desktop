@@ -1,0 +1,20 @@
+---
+- name: Terminator | Install Terminator
+  become: true
+  apt:
+    name:  terminator
+    state: latest
+
+- name: Terminator | Create Terminator directory
+  file:
+    path:   "/home/{{ ansible_user }}/.config/terminator"
+    state:  directory
+    owner:  "{{ ansible_user }}"
+    group:  "{{ ansible_user }}"
+    mode:   0755
+
+- name: Terminator | Copy Terminator config file
+  copy:
+    src:  "terminator-config"
+    dest: "/home/{{ ansible_user }}/.config/terminator/config"
+    mode: 0755

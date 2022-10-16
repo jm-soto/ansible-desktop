@@ -1,0 +1,206 @@
+---
+- name: Install requirement pip module
+  pip:
+    name: psutil
+
+- name: Install dconf-editor
+  apt:
+    name: dconf-editor
+    state: latest
+  
+- name: GNOME settings.
+  vars:
+    ansible_become_user: '{{ ansible_user }}'
+  block:
+
+    - name: Enable Gnome Dark mode
+      dconf:
+        key:    "/org/gnome/desktop/interface/gtk-theme"
+        value:  "'Yaru-dark'"
+
+    # Desktop Wallpaper
+
+    - name: Create "Wallpapers" directory in {{ ansible_user }} HOME
+      file:
+        path: "{{ wallpapers_path }}"
+        state:  directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0755
+
+    - name: GNOME | Copy wallpaper
+      become: true
+      copy:
+        src:  "{{ wallpaper_picture_name }}"
+        dest: "{{ wallpapers_path }}"
+        mode: 0664
+    
+    - name: GNOME | Set the wallpaper
+      dconf:
+        key: "/org/gnome/desktop/background/picture-uri"
+        value: "'file://{{ wallpapers_path }}/{{ wallpaper_picture_name }}'"
+
+    # Status menu
+
+    - name: GNOME | Show battery percentage
+      dconf:
+        key:    "/org/gnome/desktop/interface/show-battery-percentage"
+        value:  "true"
+
+    - name: GNOME | Clock show date
+      dconf:
+        key:    "/org/gnome/desktop/interface/clock-show-date"
+        value:  "{{ battery_percent_icon }}"
+
+    # Screen settings
+
+    - name: GNOME | Disabled automatic brightness
+      dconf:
+        key:    "/org/gnome/settings-daemon/plugins/power/ambient-enabled"
+        value:  "{{ automatic_brightness }}"
+
+    - name: GNOME | Decrease brightness when inactive
+      dconf:
+        key:    "/org/gnome/settings-daemon/plugins/power/idle-dim"
+        value:  "{{ brightness_inactivity }}"
+
+    - name: GNOME | Decrease brightness level
+      dconf:
+        key:    "/org/gnome/settings-daemon/plugins/power/idle-brightness"
+        value:  "{{ brightness_level }}"
+
+    - name: GNOME | Decrease brightness time
+      dconf:
+        key:    "/org/gnome/desktop/session/idle-delay"
+        value:  "{{ decreate_brightness_time }}"
+
+    # GNOME dock settings
+
+    - name: GNOME | Icons size
+      dconf:
+        key:    "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+        value:  "{{ incons_size }}"
+
+    - name: GNOME | Set favorites apps
+      dconf:
+        key:    "/org/gnome/shell/favorite-apps"
+        value:  "{{ favorite_apps | string }}"
+
+    # Keyboard layout 
+
+    - name: GNOME | Configure keyboard layouts
+      become: true
+      community.general.dconf:
+        key:    "/org/gnome/desktop/input-sources/sources"
+        value:  "[('xkb', 'es'), ('xkb', 'us')]"
+        state:  present
+
+    # GNOME Shortcuts
+
+    #################
+    # Navitagion
+    #################
+
+    - name: GNOME | Workspaces only on primary
+      dconf:
+        key:    "/org/gnome/mutter/workspaces-only-on-primary"
+        value:  "{{ workspaces_only_on_primary }}"
+
+    - name: GNOME | Workspaces dynamic
+      dconf:
+        key:    "/org/gnome/mutter/dynamic-workspaces"
+        value:  "{{ workspaces_dynamic }}"
+
+    - name: GNOME | Setting static workspaces
+      when: workspaces_dynamic == "false"
+      block:  
+
+      - name: GNOME | Set the numbers of workspaces
+        dconf:
+          key:    "/org/gnome/desktop/wm/preferences/num-workspaces"
+          value:  "{{ workspaces_number | string }}"
+      
+      - name: GNOME | Switch between workspaces shortcuts
+        dconf:
+          key:    "/org/gnome/desktop/wm/keybindings/switch-to-workspace-{{ item }}"
+          value:  "['<Primary>{{ item | string }}']"
+        with_sequence: start=1 end="{{ workspaces_number }}"
+
+      - name: GNOME | Move windows between workspaces shortcuts
+        dconf:
+          key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-{{ item.workspace }}"
+          value:  "['<Primary><Shift>{{ item.keymap | string }}']"
+        loop: "{{ workspaces_move_windows_keymap }}"
+
+    ################
+    # Windows
+    ################
+    
+    - name: GNOME | Maximize window
+      dconf:
+        key:    "/org/gnome/desktop/wm/keybindings/maximize"
+        value:  "['<Super>k']"
+    
+    - name: GNOME | Unmaximize window
+      dconf:
+        key:    "/org/gnome/desktop/wm/keybindings/unmaximize"
+        value:  "['<Super>j']"    
+    
+    - name: GNOME | View split on left
+      block:
+      
+      - name: GNOME | Disable Hide Window shortcut
+        dconf:
+          key:    "/org/gnome/desktop/wm/keybindings/minimize"
+          value:  "['']"
+
+      - name: GNOME | View split on left shortcut 
+        dconf:
+          key:    "/org/gnome/mutter/keybindings/toggle-tiled-left"
+          value:  "['<Super>h']"
+    
+    - name: GNOME | View split on right
+      dconf:
+        key:    "/org/gnome/mutter/keybindings/toggle-tiled-right"
+        value:  "['<Super>l']"
+
+    #################
+    # Custom
+    #################
+
+    - name: GNOME | Check installed apps
+      package_facts:
+        manager: "auto"
+
+    # Flameshot
+
+    - name: GNOME | "flameshot" screenshot shortcut configuration.
+      when: 
+        - "'flameshot' in ansible_facts.packages"
+      block:
+
+      - name: GNOME | Flameshot disable default screenshot application
+        dconf:
+          key: "/org/gnome/settings-daemon/plugins/media-keys/screenshot"
+          value: "['']"
+
+      - name: GNOME | Flameshot shortcut name
+        dconf:
+          key:    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+          value:  "'Flameshot'"
+
+      - name: GNOME | Flameshot shortcut command
+        dconf:
+          key:    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+          value:  "'/usr/bin/flameshot gui'"
+
+      - name: GNOME | Flameshot shortcut binding
+        dconf:
+          key:    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+          value:  "'Print'"
+
+      # All of your custom shortcuts must also be added to an array.
+      - name: GNOME | Flameshot enable keybindings
+        dconf:
+          key:    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+          value:  "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"

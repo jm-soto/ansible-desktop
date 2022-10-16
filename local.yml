@@ -1,12 +1,21 @@
 ---
 - name: Setting up this machine
   hosts: localhost
-  become: true	
 
-  roles:
-    # - role: docker
-    #   vars:
-    #     docker_users: your_user
-    # - role: anydesk
-    # - role: slack
-    # - role: pycharm
+  # roles:
+  #   - role: commons
+  #     become: true
+  #   - role: docker
+  #     become: true
+  #     vars:
+  #       docker_users: "{{ ansible_user }}"
+  #   - role: terminator
+  #   - role: ohmyzsh
+  #   - role: pycharm
+  #     become: true
+  #   - role: anydesk
+  #     become: true
+  #   - role: slack
+  #     become: true
+  #   - role: gnome
+  #     become: true

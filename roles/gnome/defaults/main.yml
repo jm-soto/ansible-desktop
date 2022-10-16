@@ -1,0 +1,53 @@
+---
+# Wallpaper settings
+# Set the name of the wallpapers directory you want.
+wallpapers_directory_name: "Wallpapers"
+wallpapers_path: "/home/{{ ansible_user }}/{{ wallpapers_directory_name }}"
+# The wallpaper must be exist in the file directory of the gnome role.
+wallpaper_picture_name: "astronaut.png"
+
+# Power
+battery_percent_icon:     "true"
+
+# Screen
+automatic_brightness:     "false"
+brightness_inactivity:    "true"
+decreate_brightness_time: "300"     # 5 minutes
+brightness_level:         "30"
+
+# Dock
+incons_size:  "35"
+favorite_apps:
+  - firefox.desktop
+  - org.gnome.Nautilus.desktop
+  - org.gnome.Software.desktop
+  - pycharm-community-2022.2.3.desktop
+
+# Workspaces
+workspaces_only_on_primary: "false" 
+workspaces_dynamic: "false"
+workspaces_number: 4
+
+# Press Ctrl+shift+keymap to move windows between workspaces
+workspaces_move_windows_keymap:
+  - workspace:  "1"
+    keymap:     "exclam"
+  - workspace:  "2"
+    keymap:     "quotedbl"
+  - workspace:  "3"
+    keymap:     "periodcentered"
+  - workspace:  "4"
+    keymap:     "dollar"
+  - workspace:  "5"
+    keymap:     "percent"
+  - workspace:  "6"
+    keymap:     "ampersand"
+  - workspace:  "7"
+    keymap:     "slash"
+  - workspace:  "8"
+    keymap:     "parenleft"
+  - workspace:  "9"
+    keymap:     "parenright"
+  - workspace:  "10"
+    keymap:     "equal"
+  
