@@ -5,7 +5,7 @@
 #
 #   $ apt-cache madison docker-ce
 #
-docker_ce_version: "20.10.16"
+docker_ce_version: "20.10.19"
 docker_package:
   - "docker-ce=5:{{ docker_ce_version }}~3-0~ubuntu-focal"
   - "docker-ce-cli"
