@@ -10,7 +10,7 @@
     state:  present
   when: ansible_distribution != "Ubuntu" or ansible_distribution_version is version('20.04', '<')
 
-- name: Ensure additional dependies are installed (on Ubuntu >= 20.04)
+- name: Ensure additional dependencies are installed (on Ubuntu >= 20.04)
   apt:
     name:   gnupg
     state:  present
