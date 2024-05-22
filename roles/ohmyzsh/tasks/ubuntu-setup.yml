@@ -4,26 +4,36 @@
   apt:
     name:  zsh
     state: latest
+  tags:
+    - ohmyzsh-install
 
 - name: OhMyZsh | Check previous installations
   stat:
     path: "/home/{{ ansible_user }}~/.oh-my-zsh"
   register: oh_my_zsh_result
+  tags:
+    - ohmyzsh-install
 
 - name: OhMyZsh | Clone OhMyZsh repository
   git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: "/home/{{ ansible_user }}/.oh-my-zsh"
   when: not oh_my_zsh_result.stat.exists
+  tags:
+    - ohmyzsh-install
 
 - name: OhMyZsh | Copy .zshrc file
   copy:
     src:  "zshrc-config"
     dest: "/home/{{ ansible_user }}/.zshrc"
     mode: 0644
+  tags:
+    - ohmyzsh-install
 
 - name: OhMyZsh | Change default shell to zsh
   become: true
   user:
     name: "{{ ansible_user }}"
     shell: /usr/bin/zsh
+  tags:
+    - ohmyzsh-install

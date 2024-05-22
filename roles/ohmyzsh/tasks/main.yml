@@ -1,3 +1,5 @@
 ---
 - name: Include {{ ansible_distribution }} specific tasks
   include_tasks: "{{ ansible_distribution | lower }}-setup.yml"
+  tags:
+    - ohmyzsh-install
