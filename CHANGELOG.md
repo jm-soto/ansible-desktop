@@ -1,3 +1,9 @@
+## v0.5.1 (2024-05-22)
+
+### Fix
+
+- **gh-actions**: fix release workflow tag name
+
 ## v0.5.0 (2024-05-22)
 
 ### Feat
