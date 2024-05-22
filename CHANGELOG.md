@@ -1,3 +1,19 @@
+## v0.5.0 (2024-05-22)
+
+### Feat
+
+- **gh-workflows**: generate a new release when new tag is added
+- **bump**: update repository tags name
+- **gh-actions**: update checkout action version
+
+### Fix
+
+- **CHANGELOG.md**: remove 0.5.0 bump
+- **gh-actions**: configure workflows
+- **gh-workflows**: correct tags name
+- **test**: generate new tag to test actions
+- **gh-workflows**: update release action version
+
 ## v0.4.0 (2024-05-22)
 
 ### Feat
