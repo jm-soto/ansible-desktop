@@ -1,3 +1,9 @@
+## v0.6.1 (2024-05-22)
+
+### Fix
+
+- **gh-action**: fix release workload
+
 ## v0.6.0 (2024-05-22)
 
 ### Feat
