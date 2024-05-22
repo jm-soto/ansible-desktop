@@ -1,3 +1,9 @@
+## v0.6.2 (2024-05-22)
+
+### Fix
+
+- **release.yaml**: fix release.yaml
+
 ## v0.6.1 (2024-05-22)
 
 ### Fix
