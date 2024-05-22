@@ -1,3 +1,10 @@
+## v0.8.0 (2024-05-22)
+
+### Feat
+
+- **ohmyzsh-role**: add alias and modularize .zshrc
+- **ohmyzsh-role**: tagged ohmyzsh tasks
+
 ## v0.7.0 (2024-05-22)
 
 ### Feat
