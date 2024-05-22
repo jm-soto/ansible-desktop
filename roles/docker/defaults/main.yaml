@@ -1,10 +1,10 @@
 # Old versions to uninstall.
 docker_old_packages:
-  - docker
-  - docker-engine
-  - docker.io
-  - containerd
-  - runc
+  - docker-ce
+  - docker-ce-cli
+  - docker-buildx-plugin
+  - docker-ce-rootless-extras
+  - docker-compose-plugin
 old_packages_status: absent
 
 # Docker packages.
