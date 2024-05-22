@@ -1,7 +1,8 @@
 *.retry
 
-# Pycharm
+# IDE's
 .idea
+.vscode
 
 # VSC
 .vscode/*
