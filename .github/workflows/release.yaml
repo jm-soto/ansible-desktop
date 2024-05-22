@@ -3,7 +3,7 @@ name: Create Release
 on:
   push:
     tags:
-      - "ansible-desktop-v*.*.*"
+      - "v*.*.*"
 
 jobs:
   build:
