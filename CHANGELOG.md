@@ -1,9 +1,3 @@
-## v0.5.0 (2024-05-22)
-
-### Feat
-
-- **gh-actions**: update checkout action version
-
 ## v0.4.0 (2024-05-22)
 
 ### Feat
