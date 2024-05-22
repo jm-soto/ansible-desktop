@@ -19,12 +19,3 @@ docker_restart_handler_state: restarted
 docker_service_state: started
 docker_service_enabled: true
 
-# Docker compose installation
-# After set the docker repository, use this command to
-# list available docker-compose versions: 
-#
-#   $ apt-cache madison docker-compose-plugin
-##
-docker_compose_version: "2.5.0"
-docker_compose_url: "https://github.com/docker/compose/releases/download/v{{ docker_compose_version }}/docker-compose-Linux-{{ ansible_architecture }}"
-docker_compose_installation_path: /usr/local/bin/docker-compose

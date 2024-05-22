@@ -11,4 +11,3 @@ docker_package:
   - containerd.io
 docker_package_state: present
 
-docker_compose_install: true

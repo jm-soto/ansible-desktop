@@ -33,7 +33,3 @@
   include_tasks: docker-user.yaml
   when: docker_users | length > 0
 
-- name: Install docker-compose
-  include_tasks: docker-compose.yaml
-  when: 
-    - docker_compose_install | bool
