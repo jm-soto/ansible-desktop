@@ -1,3 +1,9 @@
+## v0.7.0 (2024-05-22)
+
+### Feat
+
+- **gh-action**: remove release.yaml action
+
 ## v0.6.2 (2024-05-22)
 
 ### Fix
