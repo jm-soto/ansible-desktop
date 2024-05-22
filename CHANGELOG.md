@@ -1,16 +1,4 @@
-## v0.6.1 (2024-05-22)
-
-### Fix
-
-- **gh-workflows**: update release action version
-
-## ansible-desktop-v0.6.0 (2024-05-22)
-
-### Feat
-
-- **gh-workflows**: generate a new release when new tag is added
-
-## ansible-desktop-v0.5.0 (2024-05-22)
+## v0.5.0 (2024-05-22)
 
 ### Feat
 
