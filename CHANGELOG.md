@@ -1,3 +1,9 @@
+## v0.6.0 (2024-05-22)
+
+### Feat
+
+- **gh-action**: force a new release
+
 ## v0.5.1 (2024-05-22)
 
 ### Fix
