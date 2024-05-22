@@ -1,5 +1,4 @@
-[tool]
 [tool.commitizen]
 name = "cz_conventional_commits"
 version = "0.5.0"
-tag_format = "v$version"
+tag_format = "ansible-desktop-v$version"
