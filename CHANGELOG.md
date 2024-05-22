@@ -1,3 +1,24 @@
+## v0.4.0 (2024-05-22)
+
+### Feat
+
+- **bumpversion.yaml**: configure gh action to generate bump version
+- **hosts.yml**: get user name from environment variable USER
+- **neovim-role**: delete neovim role
+- **docker-role**: add tags to run a group of tasks
+- **docker-role**: remove docker-compose installation process
+- **docker-role**: update docker version
+- **nvim**: nvim configuration file
+- **vscode-role**: vscode role to install this IDE in Ubuntu desktop 20.04 systems
+
+### Fix
+
+- **docker-setup-Debian.yaml**: typo
+
+### Refactor
+
+- **docker-role**: remove docker-compose installation task
+
 ## v0.3.0 (2022-10-16)
 
 ### Feat
