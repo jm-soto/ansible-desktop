@@ -4,7 +4,7 @@
     update_cache:     yes
     cache_valid_time: 3600
   tags: 
-    - apt
+    - apt-upgrade
     - commons
 
 - name: APT | System upgrade
@@ -12,7 +12,7 @@
   apt:
     upgrade: "yes"
   tags: 
-    - apt
+    - apt-upgrade
     - commons
 
 - name: APT | Uninstall common packages
@@ -22,7 +22,6 @@
     state:  absent
     purge:  yes
   tags: 
-    - apt
     - commons
 
 - name: APT | Install common packages
@@ -31,7 +30,6 @@
     name:  "{{ packages_to_install_list }}"
     state: latest
   tags: 
-    - apt
     - commons
 
 - name: APT | Remove useless packages and dependencies not required
@@ -39,7 +37,6 @@
     autoremove: yes
     autoclean:  yes
   tags:
-    - apt
     - commons
 
 # Python packages
