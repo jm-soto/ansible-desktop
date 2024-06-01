@@ -1,3 +1,9 @@
+## v0.9.0 (2024-06-01)
+
+### Feat
+
+- **local.yaml**: ansible user from system variable
+
 ## v0.8.0 (2024-05-22)
 
 ### Feat
