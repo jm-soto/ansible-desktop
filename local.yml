@@ -11,7 +11,8 @@
       become: true
       vars:
         docker_users: "{{ ansible_user }}"
-      tags: docker
+      tags: 
+        - docker
     - role: terminator
       tags:
         - terminator
@@ -30,6 +31,8 @@
       become: true
     - role: slack
       become: true
+      tags:
+        - slack
     - role: gnome
       become: true
       tags:
