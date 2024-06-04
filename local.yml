@@ -3,19 +3,37 @@
   hosts: localhost
 
   roles:
-    - role: commons
+    - role: apt-commons
       become: true
+      tags:
+        - commons
     - role: docker
       become: true
       vars:
         docker_users: "{{ ansible_user }}"
+      tags: 
+        - docker
     - role: terminator
+      tags:
+        - terminator
     - role: ohmyzsh
+      tags:
+        - ohmyzsh
     - role: pycharm
       become: true
+      tags:
+        - pycharm
+    - role: vscode
+      become: true
+      tags:
+        - vscode
     - role: anydesk
       become: true
     - role: slack
       become: true
+      tags:
+        - slack
     - role: gnome
       become: true
+      tags:
+        - gnome
