@@ -1,3 +1,11 @@
+## v0.9.1 (2024-06-04)
+
+### Refactor
+
+- change role name
+- **local.yml**: add docker and slack tags
+- **WIP**: add tags for roles and interestings role tasks
+
 ## v0.9.0 (2024-06-01)
 
 ### Feat
