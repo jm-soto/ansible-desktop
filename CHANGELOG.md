@@ -1,3 +1,11 @@
+## v0.14.0 (2025-10-10)
+
+### Feat
+
+- **Taskfile**: configure taskfile to run target commands
+- **docker**: update playbook to use geerlingguy.docker role
+- **docker**: configure role geerlingguy.docker to manage docker installation
+
 ## v0.13.0 (2025-10-10)
 
 ### Feat
