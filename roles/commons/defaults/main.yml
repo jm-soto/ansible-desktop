@@ -40,3 +40,4 @@ packages_to_uninstall_list:
 brew_packages_install:
   - gcc
   - thefuck
+  - commitizen
