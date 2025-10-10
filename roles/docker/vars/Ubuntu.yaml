@@ -6,7 +6,7 @@
 #   $ apt-cache madison docker-ce
 #
 docker_package:
-  - "docker-ce=5:26.1.3-1~ubuntu.20.04~focal"
+  - "docker-ce=5:28.5.1-1~ubuntu.24.04~noble"
   - "docker-ce-cli"
   - containerd.io
 docker_package_state: present
