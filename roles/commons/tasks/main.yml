@@ -1,7 +1,31 @@
 ---
-- name: Include "{{ ansible_distribution }}" OS family tasks.
+# Commons Role | Main tasks
+# This role handles system dependencies and package installation for common tools.
+#
+- name: Debug | Show Ansible PATH variable for troubleshooting
+  ansible.builtin.debug:
+    msg: "{{ lookup('env','PATH') }}"
+  tags:
+    - commons
+    - debug
+
+- name: System Dependencies | Check all required tools
+  include_tasks: tools_check.yml
+  loop: "{{ tools_to_check }}"
+  loop_control:
+    loop_var: tool_name
+  tags:
+    - commons
+    - check
+
+- name: OS Setup | Include "{{ ansible_distribution }}" OS-specific setup tasks
   include_tasks: "{{ ansible_distribution | lower }}-setup.yml"
   tags:
-    - apt-upgrade
     - commons
+    - apt-upgrade
 
+- name: Brew | Install Brew packages if Homebrew exists
+  import_tasks: brew-packages.yml
+  tags:
+    - commons
+    - brew

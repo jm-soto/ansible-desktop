@@ -1,4 +1,8 @@
 ---
+# Required Tools
+tools_to_check:
+  - brew
+
 # APT 
 system_upgrade: true
 
@@ -17,6 +21,7 @@ packages_to_install_list:
   - flameshot
   - timeshift
   - xz-utils
+  - build-essential
 
 uninstall_packages: true
 packages_to_uninstall_list:
@@ -30,4 +35,8 @@ packages_to_uninstall_list:
   - open-vm-tools
   - popularity-contest
   - sosreport
-  - tmux
+
+# BREW
+brew_packages_install:
+  - gcc
+  - thefuck

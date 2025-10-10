@@ -39,9 +39,3 @@
   tags:
     - commons
 
-# Python packages
-- name: PIP | Install The Fuck
-  ansible.builtin.pip:
-    executable: pip3
-    name: thefuck
-    state: present

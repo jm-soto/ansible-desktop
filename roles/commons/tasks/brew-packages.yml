@@ -1,0 +1,21 @@
+---
+# Install Brew packages only if Homebrew is present
+
+- name: Brew | Install Brew packages if Homebrew exists
+  become: false
+  community.general.homebrew:
+    name: "{{ brew_packages_install }}"
+    state: present
+  when: tool_brew is defined and tool_brew.rc == 0
+  tags:
+    - commons
+    - brew
+
+- name: Brew | Skip Brew package installation if Homebrew is not found
+  ansible.builtin.debug:
+    msg: "⚠️ Homebrew not found — skipping Brew package installation"
+  when: tool_brew is not defined or tool_brew.rc != 0
+  tags:
+    - commons
+    - brew
+    - debug

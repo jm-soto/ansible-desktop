@@ -3,7 +3,7 @@
   hosts: localhost
 
   roles:
-    - role: apt-commons
+    - role: commons
       become: true
       tags:
         - commons

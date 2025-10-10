@@ -1,0 +1,48 @@
+---
+##################
+# tools_check.yml #
+##################
+#
+# Checks if a specific tool exists on the system.
+# For brew, it loads the Linuxbrew environment via shellenv before checking.
+# Creates a fact `tool_<tool_name>` that can be used in conditional tasks
+#
+- name: Check if {{ tool_name }} exists and set fact
+  ansible.builtin.shell: |
+    {% if tool_name == 'brew' %}
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    which brew
+    {% else %}
+    which {{ tool_name }}
+    {% endif %}
+  register: _tool_result
+  changed_when: false
+  failed_when: false
+  tags:
+    - commons
+    - check
+
+- name: Set fact {{ tool_name }} from check result
+  set_fact:
+    "tool_{{ tool_name }}": "{{ _tool_result }}"
+  tags:
+    - commons
+    - check
+
+- name: Debug | Show result for {{ tool_name }}
+  ansible.builtin.debug:
+    msg: >-
+      {{
+        (_tool_result.rc == 0)
+        | ternary(
+            tool_name ~ " found at " ~ _tool_result.stdout,
+            tool_name ~ " is not installed or not in the PATH"
+          )
+      }}
+  tags:
+    - commons
+    - debug
+
+#- debug:
+#    var: tool_{{ tool_name }}
+

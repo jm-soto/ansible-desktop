@@ -6,6 +6,7 @@ Ansible repository to setup different desktop machines and play with this awesom
 
 - Git
 - Ansible
+- [Homebrew](https://brew.sh/)
 
 
 ## Usage
