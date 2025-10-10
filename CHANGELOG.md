@@ -1,3 +1,9 @@
+## v0.12.0 (2025-10-10)
+
+### Feat
+
+- **homebrew**: install commitizen
+
 ## v0.11.0 (2025-10-10)
 
 ### Feat
