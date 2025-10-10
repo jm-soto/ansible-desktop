@@ -3,10 +3,10 @@
   hosts: localhost
 
   roles:
-#    - role: commons
-#      become: true
-#      tags:
-#        - commons
+    - role: commons
+      become: true
+      tags:
+        - commons
     - role: geerlingguy.docker
       become: true
       vars:
@@ -14,27 +14,27 @@
           "{{ ansible_user }}"
       tags: 
         - docker
-#    - role: terminator
-#      tags:
-#        - terminator
-#    - role: ohmyzsh
-#      tags:
-#        - ohmyzsh
-#    - role: pycharm
-#      become: true
-#      tags:
-#        - pycharm
-#    - role: vscode
-#      become: true
-#      tags:
-#        - vscode
-#    - role: anydesk
-#      become: true
-#    - role: slack
-#      become: true
-#      tags:
-#        - slack
-#    - role: gnome
-#      become: true
-#      tags:
-#        - gnome
+    - role: terminator
+      tags:
+        - terminator
+    - role: ohmyzsh
+      tags:
+        - ohmyzsh
+    - role: pycharm
+      become: true
+      tags:
+        - pycharm
+    - role: vscode
+      become: true
+      tags:
+        - vscode
+    - role: anydesk
+      become: true
+    - role: slack
+      become: true
+      tags:
+        - slack
+    - role: gnome
+      become: true
+      tags:
+        - gnome
