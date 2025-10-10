@@ -1,0 +1,13 @@
+---
+collections:
+  - name: community.general
+    src: https://galaxy.ansible.com/community/general
+    version: 11.4.0
+  - name: community.docker
+    src: https://galaxy.ansible.com/community/docker
+    version: 4.8.1
+
+roles:
+  - name: geerlingguy.docker
+    version: "7.6.0"
+

@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+
+  # --- Setup & Dependencies ---
+  setup:
+    desc: "Install Ansible Galaxy roles and collections"
+    cmds:
+      - mkdir ./ansible_galaxy || exit 0
+      - ansible-galaxy role install -r requirements.yml -p ./ansible_galaxy/roles
+      - ansible-galaxy collection install -r requirements.yml -p ./ansible_galaxy

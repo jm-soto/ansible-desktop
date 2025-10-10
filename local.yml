@@ -7,10 +7,11 @@
       become: true
       tags:
         - commons
-    - role: docker
+    - role: geerlingguy.docker
       become: true
       vars:
-        docker_users: "{{ ansible_user }}"
+        docker_users:
+          "{{ ansible_user }}"
       tags: 
         - docker
     - role: terminator
