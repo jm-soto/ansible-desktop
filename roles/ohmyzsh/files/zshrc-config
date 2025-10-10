@@ -11,7 +11,7 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/.bash:/usr/local/go/bin:$PATH"
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="bira"
+ZSH_THEME="rkj-repos" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -63,7 +63,7 @@ ZSH_THEME="bira"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="dd/mm/yyyy"
+HIST_STAMPS="%d/%m/%y %T"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -80,38 +80,63 @@ plugins=(
     asdf
     helm
     aws
-    asdf
 )
 
 source $ZSH/oh-my-zsh.sh
 
+##############
+# Completion #
+##############
 # makefile command completion
 zstyle ':completion::complete:make:*:targets' call-command true
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+##############
+# Aliases    #
+##############
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Aliases
-alias zshconfig="nvim ~/.zshrc"
-#
-# Preferred editor for local
-export EDITOR='vim'
-alias vim=nvim
-alias nv='nvim $PWD'
 
-# TheFuck https://github.com/nvbn/thefuck
-eval $(thefuck --alias)
+alias zshconfig="nvim $ZDOTDIR/.zshrc"
+
+# NeoVim editor
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export EDITOR='nvim'
+alias vim='nvim'
+alias nv='nvim'
 
 # kubectx kubens
 alias kctx=kubectx
 alias kns=kubens
 alias k=kubectl
 
+##############
+# Homebrew   #
+##############
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# TheFuck https://github.com/nvbn/thefuck
+eval $(thefuck --alias)
+
+######################
+# Extra ZSH settings #
+######################
+
 # Sensitive or custom settings 
-if [ -f $HOME/.zshrc-sensible ]; then 
+if [ -f $ZDOTDIR/.zshrc-sensible ]; then 
     source .zshrc-sensible
 fi
+
+######################
+# Completion         #
+######################
+# Perl
+PATH="/home/tekiroz/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/tekiroz/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/tekiroz/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/tekiroz/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/tekiroz/perl5"; export PERL_MM_OPT;
 
