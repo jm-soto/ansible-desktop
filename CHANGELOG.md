@@ -1,3 +1,9 @@
+## v0.10.0 (2025-10-10)
+
+### Feat
+
+- **terminator**: change terminal colours
+
 ## v0.9.1 (2024-06-04)
 
 ### Refactor
