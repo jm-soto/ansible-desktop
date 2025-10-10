@@ -1,39 +1,58 @@
 ---
-- name: OhMyZsh | Install zsh
+- name: ZSH | Install zsh
   become: true
   apt:
     name:  zsh
     state: latest
-  tags:
-    - ohmyzsh-install
 
-- name: OhMyZsh | Check previous installations
-  stat:
-    path: "/home/{{ ansible_user }}~/.oh-my-zsh"
-  register: oh_my_zsh_result
-  tags:
-    - ohmyzsh-install
+- name: ZSH | Configure ZSH
+  block:
 
-- name: OhMyZsh | Clone OhMyZsh repository
-  git:
-    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
-    dest: "/home/{{ ansible_user }}/.oh-my-zsh"
-  when: not oh_my_zsh_result.stat.exists
-  tags:
-    - ohmyzsh-install
+    - name: Create ~/.config/zsh directory
+      file:
+        path: "{{ zsh_config_dir }}"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: '0755'
 
-- name: OhMyZsh | Copy .zshrc file
-  copy:
-    src:  "zshrc-config"
-    dest: "/home/{{ ansible_user }}/.zshrc"
-    mode: 0644
-  tags:
-    - ohmyzsh-install
+    - name: Copy .zshrc file into {{ zsh_config_dir }}
+      copy:
+        src:  "zshrc-config"
+        dest: "{{ zsh_config_dir }}/.zshrc"
+        mode: 0644
 
-- name: OhMyZsh | Change default shell to zsh
-  become: true
-  user:
-    name: "{{ ansible_user }}"
-    shell: /usr/bin/zsh
-  tags:
-    - ohmyzsh-install
+    - name: Ensure XDG_CONFIG_HOME is set in .zshenv
+      lineinfile:
+        path: "{{ ansible_user_dir }}/.zshenv"
+        line: 'export XDG_CONFIG_HOME="$HOME/.config"'
+        create: yes
+        state: present
+    
+    - name: Ensure ZDOTDIR is set in .zshenv
+      lineinfile:
+        path: "{{ ansible_user_dir }}/.zshenv"
+        line: 'export ZDOTDIR="$XDG_CONFIG_HOME/zsh"'
+        create: yes
+        state: present
+
+    - name: OhMyZsh | Change default shell to zsh
+      become: true
+      user:
+        name: "{{ ansible_user }}"
+        shell: /usr/bin/zsh
+
+- name: OhMyZsh | Install and configure
+  block:
+
+    - name: Check previous installations
+      stat:
+        path: "/home/{{ ansible_user }}~/.oh-my-zsh"
+      register: oh_my_zsh_result
+    
+    - name: Clone OhMyZsh repository
+      git:
+        repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+        dest: "/home/{{ ansible_user }}/.oh-my-zsh"
+      when: not oh_my_zsh_result.stat.exists
+    
