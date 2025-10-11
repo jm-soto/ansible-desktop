@@ -1,3 +1,9 @@
+## v0.19.0 (2025-10-11)
+
+### Feat
+
+- **commons**: install bat and create simlink
+
 ## v0.18.0 (2025-10-11)
 
 ### Feat
