@@ -1,3 +1,9 @@
+## v0.16.0 (2025-10-11)
+
+### Feat
+
+- **fzf**: install and configure fzf
+
 ## v0.15.0 (2025-10-11)
 
 ### Feat
