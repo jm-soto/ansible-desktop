@@ -23,6 +23,7 @@ packages_to_install_list:
   - xz-utils
   - build-essential
   - fd-find
+  - bat
 
 uninstall_packages: true
 packages_to_uninstall_list:

@@ -47,3 +47,10 @@
     state: link
     force: yes
 
+## https://github.com/sharkdp/bat#on-ubuntu-using-apt
+- name: Create symlink for bat command
+  file:
+    src: "{{ lookup('pipe', 'which batcat') }}"
+    dest: "{{ ansible_env.HOME }}/.local/bin/bat"
+    state: link
+    force: yes
