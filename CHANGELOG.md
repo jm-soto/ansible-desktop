@@ -1,3 +1,9 @@
+## v0.18.0 (2025-10-11)
+
+### Feat
+
+- **fzf-tab**: set style for fzf-tab ohmyzsh plugin
+
 ## v0.17.0 (2025-10-11)
 
 ### Feat
