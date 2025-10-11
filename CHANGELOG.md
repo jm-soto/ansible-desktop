@@ -1,3 +1,9 @@
+## v0.15.0 (2025-10-11)
+
+### Feat
+
+- **commons**: install fd find command
+
 ## v0.14.1 (2025-10-10)
 
 ### Refactor
