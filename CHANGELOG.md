@@ -1,3 +1,9 @@
+## v0.17.0 (2025-10-11)
+
+### Feat
+
+- **fzf-tab**: replace zsh's default completion selection menu with fzf
+
 ## v0.16.0 (2025-10-11)
 
 ### Feat
