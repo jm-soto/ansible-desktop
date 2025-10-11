@@ -43,3 +43,5 @@ brew_packages_install:
   - thefuck
   - commitizen
   - go-task/tap/go-task
+  - fzf
+

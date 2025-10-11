@@ -121,6 +121,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # TheFuck https://github.com/nvbn/thefuck
 eval $(thefuck --alias)
 
+# fzf: Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border --style full'
+
 ######################
 # Extra ZSH settings #
 ######################
