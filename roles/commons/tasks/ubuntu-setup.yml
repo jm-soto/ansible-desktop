@@ -39,3 +39,11 @@
   tags:
     - commons
 
+## https://github.com/sharkdp/fd?tab=readme-ov-file#on-ubuntu
+- name: Create symlink for fd command
+  file:
+    src: "{{ lookup('pipe', 'which fdfind') }}"
+    dest: "{{ ansible_env.HOME }}/.local/bin/fd"
+    state: link
+    force: yes
+
