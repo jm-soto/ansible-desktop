@@ -81,6 +81,8 @@ plugins=(
     helm
     aws
     fzf-tab
+    gcloud
+    gh
 )
 
 source $ZSH/oh-my-zsh.sh
