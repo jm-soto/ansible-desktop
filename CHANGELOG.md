@@ -1,3 +1,9 @@
+## v0.20.0 (2025-11-14)
+
+### Feat
+
+- **zsh**: modularize custom configurations
+
 ## v0.19.0 (2025-10-11)
 
 ### Feat
