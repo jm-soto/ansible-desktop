@@ -6,6 +6,24 @@ tasks:
   setup:
     desc: "Install Ansible Galaxy roles and collections"
     cmds:
-      - mkdir ./ansible_galaxy || exit 0
+      - mkdir -p ./ansible_galaxy
       - ansible-galaxy role install -r requirements.yml -p ./ansible_galaxy/roles
       - ansible-galaxy collection install -r requirements.yml -p ./ansible_galaxy
+
+  # --- Execution ---
+  run:
+    desc: "Run the full playbook (requires sudo password)"
+    cmds:
+      - ansible-playbook -K local.yml
+
+  run:role:
+    desc: "Run a specific role. Usage: task run:role ROLE=<tag>"
+    cmds:
+      - ansible-playbook -K local.yml --tags {{.ROLE}}
+    requires:
+      vars: [ROLE]
+
+  list-tags:
+    desc: "List all available tags in the playbook"
+    cmds:
+      - ansible-playbook local.yml --list-tags

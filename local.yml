@@ -10,9 +10,8 @@
     - role: geerlingguy.docker
       become: true
       vars:
-        docker_users:
-          "{{ ansible_user }}"
-      tags: 
+        docker_users: "{{ ansible_user }}"
+      tags:
         - docker
     - role: terminator
       tags:
@@ -30,6 +29,8 @@
         - vscode
     - role: anydesk
       become: true
+      tags:
+        - anydesk
     - role: slack
       become: true
       tags:
