@@ -1,3 +1,9 @@
+## v0.22.0 (2026-01-08)
+
+### Feat
+
+- facilitate role execution via Taskfile
+
 ## v0.21.0 (2025-11-14)
 
 ### Feat
